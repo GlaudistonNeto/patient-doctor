@@ -4,12 +4,12 @@
             <input id="user-id" type="hidden" v-model="user.id" />
             <b-row>
                 <b-col md="6" sm="12">
-                    <b-form-group label="Name:" label-for="user-name">
+                    <b-form-group label="Nome:" label-for="user-name">
                         <b-form-input id="user-name" type="text"
                             v-model="user.name" required
                             :readonly="mode === 'remove'"
-                            placeholder="Inform the name of the user..." />
-                    </b-form-group>    
+                            placeholder="Informe o Nome do Usuário..." />
+                    </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
                     <b-form-group label="Mobile:" label-for="user-mobileNo">
@@ -163,7 +163,7 @@
             </b-row>
             <b-row>
                 <b-col xs="12">
-                    <b-button variant="primary" @click="save">Salvar</b-button>
+                    <b-button variant="primary" @click="save">Save</b-button>
                     <b-button variant="danger" v-if="mode === 'remove'"
                         @click="remove">Delete</b-button>
                     <b-button class="ml-2" @click="reset">Cancel</b-button>
@@ -184,6 +184,7 @@
     </div>
 </template>
 
+
 <script>
 import { baseApiUrl, showError } from '@/global'
 import axios from 'axios'
@@ -199,21 +200,20 @@ export default {
             fields: [
                 { key: 'id', label: 'Code', sortable: true },
                 { key: 'name', label: 'Name', sortable: true },
-                { key: 'AlternateNo', label: 'AlternateNo', sortable: true },
-                { key: 'PatientRefNum', label: 'patientRefNum', sortable: true },
+                { key: 'mobileNo', label: 'MobileNo', sortable: true },
+                { key: 'alternateNum', label: 'AlternateNum', sortable: true },
                 { key: 'landlineNo', label: 'Landline', sortable: true },
-                { key: 'mobileNo', label: 'Mobile', sortable: true },
                 { key: 'email', label: 'Email', sortable: true },
                 { key: 'address', label: 'Address', sortable: true },
                 { key: 'gender', label: 'Gender', sortable: true },
                 { key: 'country', label: 'Country', sortable: true },
-                { key: 'dob', label: 'dateOfBirth', sortable: true },
+                { key: 'dod', label: 'Date Of Birth', sortable: true },
                 { key: 'state', label: 'State', sortable: true },
-                { key: 'city', label: 'City', sortable: true },
                 { key: 'age', label: 'Age', sortable: true },
+                { key: 'city', label: 'City', sortable: true },
                 { key: 'dentition', label: 'Dentition', sortable: true },
                 { key: 'pincode', label: 'Pincode', sortable: true },
-                { key: 'bloodGroup', label: 'BloodGroup', sortable: true },
+                { key: 'bloodGroup', label: 'Blood Group', sortable: true },
                 { key: 'doctor', label: 'Doctor', sortable: true,
                     formatter: value => value ? 'Yes' : 'No' },
                 { key: 'Admin', label: 'Admin', sortable: true,

@@ -49,10 +49,10 @@ module.exports = app => {
 
     const get = (req, res) => {
         app.db('users')
-            .select('id', 'name', 'email', 'alternateNum', 'paitentRefNo',
-                'landlineNo', 'mobileNo', 'address', 'gender', 'country',
-                'dob', 'state', 'age', 'city', 'dentition', 'pincode',
-                'bloodGroup', 'doctor', 'receptionist', 'admin')
+            .select('id', 'name', 'mobileNo', 'alternateNum', 'landlineNo',
+            'email', 'address', 'gender', 'country', 'dod',
+            'state', 'age', 'city', 'dentition', 'pincode',
+            'bloodGroup', 'doctor', 'receptionist', 'admin')
             .whereNull('deletedAt')
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err));
@@ -60,9 +60,9 @@ module.exports = app => {
 
     const getById = (req, res) => {
         app.db('users')
-            .select('id', 'name', 'email', 'alternateNum', 'paitentRefNo',
-            'landlineNo', 'mobileNo', 'address', 'gender', 'country',
-            'dob', 'state', 'age', 'city', 'dentition', 'pincode',
+            .select('id', 'name', 'mobileNo', 'alternateNum', 'landlineNo',
+            'email', 'address', 'gender', 'country', 'dod',
+            'state', 'age', 'city', 'dentition', 'pincode',
             'bloodGroup', 'doctor', 'receptionist', 'admin')
             .where({ id: req.params.id })
             .whereNull('deletedAt')

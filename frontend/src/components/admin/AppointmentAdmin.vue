@@ -75,11 +75,11 @@ export default {
             count: 0,
             fields: [
                 { key: 'id', label: 'Code', sortable: true },
-                { key: 'name', label: 'Name', sortable: true },
                 { key: 'regarding', label: 'Regarding', sortable: true },
                 { key: 'description', label: 'Description', sortable: true },
                 { key: 'day', label: 'Day', sortable: true },
                 { key: 'hour', label: 'Hour', sortable: true },
+                { key: 'name', label: 'Name', sortable: true },
                 { key: 'actions', label: 'Actions' }
             ]
         }
