@@ -5,14 +5,14 @@ module.exports = app => {
 
     app.route('/users')
         .all(app.config.passport.authenticate())
-        .post(app.api.user.save)
-        .get(app.api.user.get)
+        .post(admin(app.api.user.save))
+        .get(admin(app.api.user.get))
 
     app.route('/users/:id')
         .all(app.config.passport.authenticate())
-        .put(app.api.user.save)
-        .get(app.api.user.getById)
-        .delete(app.api.user.remove)
+        .put(admin(app.api.user.save))
+        .get(admin(app.api.user.getById))
+        .delete(admin(app.api.user.remove))
 
     app.route('/categories')
         .all(app.config.passport.authenticate())
@@ -26,19 +26,22 @@ module.exports = app => {
     app.route('/categories/:id')
         .all(app.config.passport.authenticate())
         .get(app.api.category.getById)
-        .put(app.api.category.save)
-        .delete(app.api.category.remove)
+        .put(admin(app.api.category.save))
+        .delete(admin(app.api.category.remove))
 
     app.route('/appointments')
-        .get(app.api.appointment.get)
-        .post(app.api.appointment.save)
+        .all()
+        .get(admin(app.api.article.get))
+        .post(admin(app.api.article.save))
 
     app.route('/appointments/:id')
+        .all()
         .get(app.api.appointment.getById)
         .put(app.api.appointment.save)
         .delete(app.api.appointment.remove)
 
         app.route('/categories/:id/appointments')
+        .all()
         .get(app.api.appointment.getByCategory)
 
     app.route('/stats')
