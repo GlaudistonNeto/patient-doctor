@@ -30,18 +30,15 @@ module.exports = app => {
         .delete(admin(app.api.category.remove))
 
     app.route('/appointments')
-        .all()
-        .get(admin(app.api.article.get))
-        .post(admin(app.api.article.save))
+        .get(app.api.appointment.get)
+        .post(app.api.appointment.save)
 
     app.route('/appointments/:id')
-        .all()
         .get(app.api.appointment.getById)
         .put(app.api.appointment.save)
         .delete(app.api.appointment.remove)
 
         app.route('/categories/:id/appointments')
-        .all()
         .get(app.api.appointment.getByCategory)
 
     app.route('/stats')
