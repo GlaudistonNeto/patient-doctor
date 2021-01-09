@@ -75,9 +75,9 @@ module.exports = app => {
     };
 
     const getByCategory = async (req, res) => {
-        const cityId = req.params.id;
+        const categoryId = req.params.id;
         const page = req.query.page || 1;
-        const cities = await app.db.raw(queries.cityWithChildren, cityId);
+        const cities = await app.db.raw(queries.categoryWithChildren, categoryId);
         const ids = cities.rows.map(c => c.id);
 
         app.db({a: 'appointments', u: 'users'})
