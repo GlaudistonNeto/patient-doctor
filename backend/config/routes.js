@@ -1,3 +1,5 @@
+const admin = require('./admin')
+
 module.exports = app => {
     app.post('/signup', app.api.user.save)
     app.post('/signin', app.api.auth.signin)
@@ -16,8 +18,8 @@ module.exports = app => {
 
     app.route('/categories')
         .all(app.config.passport.authenticate())
-        .get(app.api.category.get)
-        .post(app.api.category.save)
+        .get(admin(app.api.category.get))
+        .post(admin(app.api.category.save))
 
     app.route('/categories/tree')
         .all(app.config.passport.authenticate())
@@ -29,19 +31,22 @@ module.exports = app => {
         .put(admin(app.api.category.save))
         .delete(admin(app.api.category.remove))
 
-    app.route('/appointments')
-        .get(app.api.appointment.get)
-        .post(app.api.appointment.save)
+    app.route('/appointment')
+        .all(app.config.passport.authenticate())
+        .get(admin(app.api.appointment.get))
+        .post(admin(app.api.appointment.save))
 
-    app.route('/appointments/:id')
+    app.route('/appointment/:id')
+        .all(app.config.passport.authenticate())
         .get(app.api.appointment.getById)
-        .put(app.api.appointment.save)
-        .delete(app.api.appointment.remove)
+        .put(admin(app.api.appointment.save))
+        .delete(admin(app.api.appointment.remove))
 
-        app.route('/categories/:id/appointments')
+    app.route('/categories/:id/appointment')
+        .all(app.config.passport.authenticate())
         .get(app.api.appointment.getByCategory)
 
     app.route('/stats')
         .all(app.config.passport.authenticate())
         .get(app.api.stat.get)
-};
+}
